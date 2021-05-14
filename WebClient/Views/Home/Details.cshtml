@@ -1,0 +1,92 @@
+﻿@using FilmsDTO
+@model FilmsDTO.FullFilmDTO
+@{
+	ViewData["Title"] = "Details";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+	<table class="table-bordered">
+		<thead>
+		<tr>
+			<th width="50">Id</th>
+			<th width="150">Titre</th>
+			<th width="100">Duree</th>
+			<th width="200">Note Moyenne</th>
+			<th width="500">Affiche</th>
+		</tr>
+		</thead>
+		<tbody>
+
+		@{
+			int h = Model.Runtime / 60;
+			int m = Model.Runtime - h * 60;
+			string temp = string.Format("{0}h{1:00}", h, m);
+		}
+		<tr>
+			<th scope="row">@Model.Id</th>
+			<td>@Model.Title</td>
+			<td>@temp</td>
+			<td>@Model.VoteAverage</td>
+			<td>
+				<img src="@Model.PosterPath" height="200" />
+			</td>
+			@*<td>
+						@Html.ActionLink("Details", "Details", "Home", new { ID = item.Id });
+					</td>*@
+		</tr>
+			
+
+		</tbody>
+	</table>
+	<h1>ACTEURS :</h1>
+	<table class="table-bordered">
+		<thead>
+		<tr>
+			<th width="150">Name</th>
+			<th width="150">Surname</th>
+			<th width="100">Details</th>
+		</tr>
+		</thead>
+		<tbody>
+	
+			@foreach (ActorDTO a in Model.Actors)
+			{
+				<tr>
+					<td >@a.Name</td>
+					<td>@a.Surname</td>
+					<td>
+						@Html.ActionLink("Details", "DetailsActeur", "Home", new { ID = a.Id });
+					</td>
+				</tr>
+			}
+
+		</tbody>
+	</table>
+	<h1>COMMENTAIRES :</h1>
+    	<table class="table-bordered">
+        		<thead>
+        			<tr>
+        				<th width="500">CONTENT</th>
+        				<th width="150">DATE</th>
+	                    <th width="100">RATE</th>
+	                    <th width="150">USERNAME</th>
+                    </tr>
+        		</thead>
+        		<tbody>
+           
+    	            @foreach (CommentDTO c in Model.Comments)
+    	            {
+		                <tr>
+			                <td >@c.Content</td>
+                            <td >@c.Date</td>
+                            <td >@c.Rate</td>
+                             <td >@c.Content</td>
+		                </tr>
+    		            
+	                }
+                
+                </tbody>
+        	</table>
+</div>
+

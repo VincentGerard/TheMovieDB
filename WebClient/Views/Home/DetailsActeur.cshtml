@@ -1,0 +1,62 @@
+﻿@model FilmsDTO.ActorDTO
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>ACTEUR :</h2>
+<table class="table-bordered">
+	<thead>
+		
+	<tr>
+		<th width="150">Name</th>
+		<th width="150">Surname</th>
+	</tr>
+	</thead>
+	<tbody>
+            
+            		
+	<tr>
+		<td >@Model.Name</td>
+		<td>@Model.Surname</td>
+	</tr>
+            		
+        
+	</tbody>
+</table>
+
+<h2>LISTE DES FILMS DE L'ACTEUR :</h2>
+<table class="table-bordered">
+	<thead>
+	<tr>
+		<th width="50">Id</th>
+		<th width="150">Titre</th>
+		<th width="100">Duree</th>
+		<th width="200">Note Moyenne</th>
+		<th width="200">Details</th>
+	</tr>
+	</thead>
+	<tbody>
+
+	@foreach (var item in Model.Films)
+	{
+		string stringID = "Details/" + item.Id.ToString();
+		int h = item.Runtime / 60;
+		int m = item.Runtime - h * 60;
+		string temp = string.Format("{0}h{1:00}", h, m);
+
+		<tr>
+			<th scope="row">@item.Id</th>
+			<td>@item.Title</td>
+			<td>@temp</td>
+			<td>@item.VoteAverage</td>
+			<td >
+				@Html.ActionLink("Details","Details","Home",new { ID=item.Id });
+			</td>
+		</tr>
+	}
+
+	</tbody>
+</table>
+

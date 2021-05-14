@@ -1,0 +1,784 @@
+﻿<Window x:Class="WpfAppClient.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppClient.Views"
+		xmlns:vm="clr-namespace:WpfAppClient.ViewModels"
+		mc:Ignorable="d" FontSize="20"
+        Title="Movie DB"
+		Height="720"
+		Width="1280"
+		MinHeight="720"
+		MinWidth="1280"
+		WindowStartupLocation="CenterScreen"
+		ResizeMode="CanResizeWithGrip" 
+		Background="CornflowerBlue">
+	<Window.DataContext>
+		<vm:ShellViewModel/>
+	</Window.DataContext>
+	<Grid >
+		<Grid.ColumnDefinitions >
+			<ColumnDefinition Width="2*"/>
+			<ColumnDefinition Width="100*"/>
+			<ColumnDefinition Width="2*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="10*"/>
+			<RowDefinition Height="30*"/>
+			<RowDefinition Height="15*"/>
+			<RowDefinition Height="50*"/>
+			<RowDefinition Height="5*"/>
+			<RowDefinition Height="50*"/>
+			<RowDefinition Height="5*"/>
+			<RowDefinition Height="50*"/>
+			<RowDefinition Height="5*"/>
+			<RowDefinition Height="50*"/>
+			<RowDefinition Height="5*"/>
+			<RowDefinition Height="50*"/>
+			<RowDefinition Height="10*"/>
+		</Grid.RowDefinitions>
+
+		<Grid Grid.Row="1" Grid.Column="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="2*"/>
+				<ColumnDefinition Width="0.5*"/>
+				<ColumnDefinition Width="5*"/>
+				<ColumnDefinition Width="0.2*"/>
+				<ColumnDefinition Width="15*"/>
+				<ColumnDefinition Width="15*"/>
+				<ColumnDefinition Width="2*"/>
+			</Grid.ColumnDefinitions>
+
+			<!--Task Bar-->
+			<Button Grid.Column="0" Background="Transparent" Command="{Binding Previous}">
+				<Image Source="/Assets/Images/ArrowLeft.png"/>
+			</Button>
+
+			<Viewbox Grid.Column="2" Stretch="Uniform" StretchDirection="Both">
+				<TextBlock  Text="Rechercher:" />
+				
+			</Viewbox>
+
+			<TextBox Grid.Column="4" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
+
+
+			<Button Grid.Column="6" Background="Transparent" Command="{Binding Next}">
+				<Image Source="/Assets/Images/ArrowRight.png"/>
+			</Button>
+		</Grid>
+	
+		<!--Film 1-->
+		<Grid Grid.Row="3" Grid.Column="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="0.3*"/>
+				<RowDefinition Height="1*"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.2*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="2*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="0.5*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="0.5*"/>
+			</Grid.ColumnDefinitions>
+
+			<Viewbox Grid.RowSpan="3">
+				<Image Source="{Binding Image1}" />
+			</Viewbox>
+
+			<Viewbox Grid.Column="2" >
+				<Label Content="{Binding Titre1}" HorizontalContentAlignment="Left" MinWidth="600"/>
+			</Viewbox>
+
+			<Viewbox Grid.Column="4">
+				<Label Content="{Binding Duree1}"/>
+			</Viewbox>
+
+			<Viewbox Grid.Column="6">
+				<Button Command="{Binding Details1}" Content="Détails" MinWidth="100" />
+			</Viewbox>
+
+			<!--Grid Icons Genres-->
+			<Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="5">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+				</Grid.ColumnDefinitions>
+
+				<Viewbox Grid.Column="1">
+					<Image Source="{Binding Film1Icon1}"/>
+				</Viewbox>
+				<Viewbox Grid.Column="3">
+					<Image Source="{Binding Film1Icon2}"/>
+				</Viewbox>
+				<Viewbox Grid.Column="5">
+					<Image Source="{Binding Film1Icon3}" />
+				</Viewbox>
+				<Viewbox Grid.Column="7">
+					<Image Source="{Binding Film1Icon4}" />
+				</Viewbox>
+				<Viewbox Grid.Column="9">
+					<Image Source="{Binding Film1Icon5}" />
+				</Viewbox>
+				<Viewbox Grid.Column="11">
+					<Image Source="{Binding Film1Icon6}" />
+				</Viewbox>
+				<Viewbox Grid.Column="13">
+					<Image Source="{Binding Film1Icon7}" />
+				</Viewbox>
+				<Viewbox Grid.Column="15">
+					<Image Source="{Binding Film1Icon8}" />
+				</Viewbox>
+				<Viewbox Grid.Column="17">
+					<Image Source="{Binding Film1Icon9}" />
+				</Viewbox>
+				<Viewbox Grid.Column="19">
+					<Image Source="{Binding Film1Icon10}" />
+				</Viewbox>
+				<Viewbox Grid.Column="21">
+					<Image Source="{Binding Film1Icon11}" />
+				</Viewbox>
+				<Viewbox Grid.Column="23">
+					<Image Source="{Binding Film1Icon12}" />
+				</Viewbox>
+				<Viewbox Grid.Column="25">
+					<Image Source="{Binding Film1Icon13}" />
+				</Viewbox>
+				<Viewbox Grid.Column="27">
+					<Image Source="{Binding Film1Icon14}" />
+				</Viewbox>
+				<Viewbox Grid.Column="29">
+					<Image Source="{Binding Film1Icon15}" />
+				</Viewbox>
+				<Viewbox Grid.Column="31">
+					<Image Source="{Binding Film1Icon16}" />
+				</Viewbox>
+				<Viewbox Grid.Column="33">
+					<Image Source="{Binding Film1Icon17}" />
+				</Viewbox>
+				<Viewbox Grid.Column="35">
+					<Image Source="{Binding Film1Icon18}" />
+				</Viewbox>
+				<Viewbox Grid.Column="37">
+					<Image Source="{Binding Film1Icon19}" />
+				</Viewbox>
+				<Viewbox Grid.Column="39">
+					<Image Source="{Binding Film1Icon20}" />
+				</Viewbox>
+			</Grid>
+		</Grid>
+
+		<!--Film 2-->
+		<Grid Grid.Row="5" Grid.Column="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="0.3*"/>
+				<RowDefinition Height="1*"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.2*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="2*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="0.5*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="0.5*"/>
+			</Grid.ColumnDefinitions>
+
+			<Viewbox Grid.RowSpan="3">
+				<Image Source="{Binding Image2}"/>
+			</Viewbox>
+
+			<Viewbox Grid.Column="2" >
+				<Label Content="{Binding Titre2}" HorizontalContentAlignment="Left" MinWidth="600"/>
+			</Viewbox>
+
+			<Viewbox Grid.Column="4">
+				<Label Content="{Binding Duree2}"/>
+			</Viewbox>
+
+			<Viewbox Grid.Column="6">
+				<Button Command="{Binding Details2}" Content="Détails" MinWidth="100"/>
+			</Viewbox>
+
+			<!--Grid Icons Genres-->
+			<Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="5">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+				</Grid.ColumnDefinitions>
+
+				<Viewbox Grid.Column="1">
+					<Image Source="{Binding Film2Icon1}"/>
+				</Viewbox>
+				<Viewbox Grid.Column="3">
+					<Image Source="{Binding Film2Icon2}"/>
+				</Viewbox>
+				<Viewbox Grid.Column="5">
+					<Image Source="{Binding Film2Icon3}" />
+				</Viewbox>
+				<Viewbox Grid.Column="7">
+					<Image Source="{Binding Film2Icon4}" />
+				</Viewbox>
+				<Viewbox Grid.Column="9">
+					<Image Source="{Binding Film2Icon5}" />
+				</Viewbox>
+				<Viewbox Grid.Column="11">
+					<Image Source="{Binding Film2Icon6}" />
+				</Viewbox>
+				<Viewbox Grid.Column="13">
+					<Image Source="{Binding Film2Icon7}" />
+				</Viewbox>
+				<Viewbox Grid.Column="15">
+					<Image Source="{Binding Film2Icon8}" />
+				</Viewbox>
+				<Viewbox Grid.Column="17">
+					<Image Source="{Binding Film2Icon9}" />
+				</Viewbox>
+				<Viewbox Grid.Column="19">
+					<Image Source="{Binding Film2Icon10}" />
+				</Viewbox>
+				<Viewbox Grid.Column="21">
+					<Image Source="{Binding Film2Icon11}" />
+				</Viewbox>
+				<Viewbox Grid.Column="23">
+					<Image Source="{Binding Film2Icon12}" />
+				</Viewbox>
+				<Viewbox Grid.Column="25">
+					<Image Source="{Binding Film2Icon13}" />
+				</Viewbox>
+				<Viewbox Grid.Column="27">
+					<Image Source="{Binding Film2Icon14}" />
+				</Viewbox>
+				<Viewbox Grid.Column="29">
+					<Image Source="{Binding Film2Icon15}" />
+				</Viewbox>
+				<Viewbox Grid.Column="31">
+					<Image Source="{Binding Film2Icon16}" />
+				</Viewbox>
+				<Viewbox Grid.Column="33">
+					<Image Source="{Binding Film2Icon17}" />
+				</Viewbox>
+				<Viewbox Grid.Column="35">
+					<Image Source="{Binding Film2Icon18}" />
+				</Viewbox>
+				<Viewbox Grid.Column="37">
+					<Image Source="{Binding Film2Icon19}" />
+				</Viewbox>
+				<Viewbox Grid.Column="39">
+					<Image Source="{Binding Film2Icon20}" />
+				</Viewbox>
+			</Grid>
+		</Grid>
+
+		<!--Film 3-->
+		<Grid Grid.Row="7" Grid.Column="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="0.3*"/>
+				<RowDefinition Height="1*"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.2*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="2*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="0.5*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="0.5*"/>
+			</Grid.ColumnDefinitions>
+
+			<Viewbox Grid.RowSpan="3">
+				<Image Source="{Binding Image3}"/>
+			</Viewbox>
+
+			<Viewbox Grid.Column="2" >
+				<Label Content="{Binding Titre3}" HorizontalContentAlignment="Left" MinWidth="600"/>
+			</Viewbox>
+
+			<Viewbox Grid.Column="4">
+				<Label Content="{Binding Duree3}"/>
+			</Viewbox>
+
+			<Viewbox Grid.Column="6">
+				<Button Command="{Binding Details3}" Content="Détails" MinWidth="100"/>
+			</Viewbox>
+
+			<!--Grid Icons Genres-->
+			<Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="5">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+				</Grid.ColumnDefinitions>
+
+				<Viewbox Grid.Column="1">
+					<Image Source="{Binding Film3Icon1}"/>
+				</Viewbox>
+				<Viewbox Grid.Column="3">
+					<Image Source="{Binding Film3Icon2}"/>
+				</Viewbox>
+				<Viewbox Grid.Column="5">
+					<Image Source="{Binding Film3Icon3}" />
+				</Viewbox>
+				<Viewbox Grid.Column="7">
+					<Image Source="{Binding Film3Icon4}" />
+				</Viewbox>
+				<Viewbox Grid.Column="9">
+					<Image Source="{Binding Film3Icon5}" />
+				</Viewbox>
+				<Viewbox Grid.Column="11">
+					<Image Source="{Binding Film3Icon6}" />
+				</Viewbox>
+				<Viewbox Grid.Column="13">
+					<Image Source="{Binding Film3Icon7}" />
+				</Viewbox>
+				<Viewbox Grid.Column="15">
+					<Image Source="{Binding Film3Icon8}" />
+				</Viewbox>
+				<Viewbox Grid.Column="17">
+					<Image Source="{Binding Film3Icon9}" />
+				</Viewbox>
+				<Viewbox Grid.Column="19">
+					<Image Source="{Binding Film3Icon10}" />
+				</Viewbox>
+				<Viewbox Grid.Column="21">
+					<Image Source="{Binding Film3Icon11}" />
+				</Viewbox>
+				<Viewbox Grid.Column="23">
+					<Image Source="{Binding Film3Icon12}" />
+				</Viewbox>
+				<Viewbox Grid.Column="25">
+					<Image Source="{Binding Film3Icon13}" />
+				</Viewbox>
+				<Viewbox Grid.Column="27">
+					<Image Source="{Binding Film3Icon14}" />
+				</Viewbox>
+				<Viewbox Grid.Column="29">
+					<Image Source="{Binding Film3Icon15}" />
+				</Viewbox>
+				<Viewbox Grid.Column="31">
+					<Image Source="{Binding Film3Icon16}" />
+				</Viewbox>
+				<Viewbox Grid.Column="33">
+					<Image Source="{Binding Film3Icon17}" />
+				</Viewbox>
+				<Viewbox Grid.Column="35">
+					<Image Source="{Binding Film3Icon18}" />
+				</Viewbox>
+				<Viewbox Grid.Column="37">
+					<Image Source="{Binding Film3Icon19}" />
+				</Viewbox>
+				<Viewbox Grid.Column="39">
+					<Image Source="{Binding Film3Icon20}" />
+				</Viewbox>
+			</Grid>
+		</Grid>
+
+		<!--Film 4-->
+		<Grid Grid.Row="9" Grid.Column="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="0.3*"/>
+				<RowDefinition Height="1*"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.2*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="2*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="0.5*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="0.5*"/>
+			</Grid.ColumnDefinitions>
+
+			<Viewbox Grid.RowSpan="3">
+				<Image Source="{Binding Image4}"/>
+			</Viewbox>
+
+			<Viewbox Grid.Column="2" >
+				<Label Content="{Binding Titre4}" HorizontalContentAlignment="Left" MinWidth="600"/>
+			</Viewbox>
+
+			<Viewbox Grid.Column="4">
+				<Label Content="{Binding Duree4}"/>
+			</Viewbox>
+
+			<Viewbox Grid.Column="6">
+				<Button Command="{Binding Details4}" Content="Détails" MinWidth="100"/>
+			</Viewbox>
+
+			<!--Grid Icons Genres-->
+			<Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="5">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+				</Grid.ColumnDefinitions>
+
+				<Viewbox Grid.Column="1">
+					<Image Source="{Binding Film4Icon1}"/>
+				</Viewbox>
+				<Viewbox Grid.Column="3">
+					<Image Source="{Binding Film4Icon2}"/>
+				</Viewbox>
+				<Viewbox Grid.Column="5">
+					<Image Source="{Binding Film4Icon3}" />
+				</Viewbox>
+				<Viewbox Grid.Column="7">
+					<Image Source="{Binding Film4Icon4}" />
+				</Viewbox>
+				<Viewbox Grid.Column="9">
+					<Image Source="{Binding Film4Icon5}" />
+				</Viewbox>
+				<Viewbox Grid.Column="11">
+					<Image Source="{Binding Film4Icon6}" />
+				</Viewbox>
+				<Viewbox Grid.Column="13">
+					<Image Source="{Binding Film4Icon7}" />
+				</Viewbox>
+				<Viewbox Grid.Column="15">
+					<Image Source="{Binding Film4Icon8}" />
+				</Viewbox>
+				<Viewbox Grid.Column="17">
+					<Image Source="{Binding Film4Icon9}" />
+				</Viewbox>
+				<Viewbox Grid.Column="19">
+					<Image Source="{Binding Film4Icon10}" />
+				</Viewbox>
+				<Viewbox Grid.Column="21">
+					<Image Source="{Binding Film4Icon11}" />
+				</Viewbox>
+				<Viewbox Grid.Column="23">
+					<Image Source="{Binding Film4Icon12}" />
+				</Viewbox>
+				<Viewbox Grid.Column="25">
+					<Image Source="{Binding Film4Icon13}" />
+				</Viewbox>
+				<Viewbox Grid.Column="27">
+					<Image Source="{Binding Film4Icon14}" />
+				</Viewbox>
+				<Viewbox Grid.Column="29">
+					<Image Source="{Binding Film4Icon15}" />
+				</Viewbox>
+				<Viewbox Grid.Column="31">
+					<Image Source="{Binding Film4Icon16}" />
+				</Viewbox>
+				<Viewbox Grid.Column="33">
+					<Image Source="{Binding Film4Icon17}" />
+				</Viewbox>
+				<Viewbox Grid.Column="35">
+					<Image Source="{Binding Film4Icon18}" />
+				</Viewbox>
+				<Viewbox Grid.Column="37">
+					<Image Source="{Binding Film4Icon19}" />
+				</Viewbox>
+				<Viewbox Grid.Column="39">
+					<Image Source="{Binding Film4Icon20}" />
+				</Viewbox>
+			</Grid>
+		</Grid>
+
+		<!--Film 5-->
+		<Grid Grid.Row="11" Grid.Column="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="0.3*"/>
+				<RowDefinition Height="1*"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.2*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="2*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="0.5*"/>
+				<ColumnDefinition Width="0.1*"/>
+				<ColumnDefinition Width="0.5*"/>
+			</Grid.ColumnDefinitions>
+
+			<Viewbox Grid.RowSpan="3">
+				<Image Source="{Binding Image5}"/>
+			</Viewbox>
+
+			<Viewbox Grid.Column="2" >
+				<Label Content="{Binding Titre5}" HorizontalContentAlignment="Left" MinWidth="600"/>
+			</Viewbox>
+
+			<Viewbox Grid.Column="4">
+				<Label Content="{Binding Duree5}"/>
+			</Viewbox>
+
+			<Viewbox Grid.Column="6">
+				<Button Command="{Binding Details5}" Content="Détails" MinWidth="100"/>
+			</Viewbox>
+
+			<!--Grid Icons Genres-->
+			<Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="5">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="0.1*"/>
+				</Grid.ColumnDefinitions>
+
+				<Viewbox Grid.Column="1">
+					<Image Source="{Binding Film5Icon1}"/>
+				</Viewbox>
+				<Viewbox Grid.Column="3">
+					<Image Source="{Binding Film5Icon2}"/>
+				</Viewbox>
+				<Viewbox Grid.Column="5">
+					<Image Source="{Binding Film5Icon3}" />
+				</Viewbox>
+				<Viewbox Grid.Column="7">
+					<Image Source="{Binding Film5Icon4}" />
+				</Viewbox>
+				<Viewbox Grid.Column="9">
+					<Image Source="{Binding Film5Icon5}" />
+				</Viewbox>
+				<Viewbox Grid.Column="11">
+					<Image Source="{Binding Film5Icon6}" />
+				</Viewbox>
+				<Viewbox Grid.Column="13">
+					<Image Source="{Binding Film5Icon7}" />
+				</Viewbox>
+				<Viewbox Grid.Column="15">
+					<Image Source="{Binding Film5Icon8}" />
+				</Viewbox>
+				<Viewbox Grid.Column="17">
+					<Image Source="{Binding Film5Icon9}" />
+				</Viewbox>
+				<Viewbox Grid.Column="19">
+					<Image Source="{Binding Film5Icon10}" />
+				</Viewbox>
+				<Viewbox Grid.Column="21">
+					<Image Source="{Binding Film5Icon11}" />
+				</Viewbox>
+				<Viewbox Grid.Column="23">
+					<Image Source="{Binding Film5Icon12}" />
+				</Viewbox>
+				<Viewbox Grid.Column="25">
+					<Image Source="{Binding Film5Icon13}" />
+				</Viewbox>
+				<Viewbox Grid.Column="27">
+					<Image Source="{Binding Film5Icon14}" />
+				</Viewbox>
+				<Viewbox Grid.Column="29">
+					<Image Source="{Binding Film5Icon15}" />
+				</Viewbox>
+				<Viewbox Grid.Column="31">
+					<Image Source="{Binding Film5Icon16}" />
+				</Viewbox>
+				<Viewbox Grid.Column="33">
+					<Image Source="{Binding Film5Icon17}" />
+				</Viewbox>
+				<Viewbox Grid.Column="35">
+					<Image Source="{Binding Film5Icon18}" />
+				</Viewbox>
+				<Viewbox Grid.Column="37">
+					<Image Source="{Binding Film5Icon19}" />
+				</Viewbox>
+				<Viewbox Grid.Column="39">
+					<Image Source="{Binding Film5Icon20}" />
+				</Viewbox>
+			</Grid>
+		</Grid>
+
+		<ContentControl Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="1" x:Name="ActiveItem"/>
+
+	</Grid>
+</Window>

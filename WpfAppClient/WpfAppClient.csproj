@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\Icons\action.png" />
+      <None Remove="Assets\Icons\adventure.png" />
+      <None Remove="Assets\Icons\family.png" />
+      <None Remove="Assets\Images\ArrowLeft.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\WebServerApi\WebServerApi.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Assets\Icons\action.png" />
+      <Resource Include="Assets\Icons\adventure.png" />
+      <Resource Include="Assets\Icons\family.png" />
+      <Resource Include="Assets\Images\ArrowLeft.png" />
+      <Resource Include="Assets\Images\ArrowRight.png" />
+    </ItemGroup>
+
+</Project>
