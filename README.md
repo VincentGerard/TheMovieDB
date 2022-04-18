@@ -1,10 +1,7 @@
 # TheMovieDB
-Ce projet a été réaliser dans le cadre du cours de C# à l'Inpres (HEPL).
+This project was done during my studies of Computer Science at Inpres(HEPL) in Liège.
 
-Développement d’une application de consultation de l’API TheMovieDB en C#, WPF (MVVM) et ASP .NET Web (MVC).
-Utilisation d’une REST API, Entity Framework Core, SQLite (CRUD) et LINQ. Développement orienté test (TDD) via Nunit.
-
-Toujours en cours de développement!
+Development of a front end WPF(MVVM) app in C#, using local and remote API’s. Database in SQLite(CRUD) using Entity Framework Core and LINQ. Test driven development using Nunit.
 
 Wpf App:
 <img src="Images/WPF_APP.PNG">
